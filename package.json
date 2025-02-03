@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "firebase": "^11.2.0"
+  },
+  "name": "maverics",
+  "description": "- **Medication adherence platform with smart tracking**\r - **Centralized prescription management** for patients/caregivers\r - **Data-driven insights** for medication optimization\r - **Collaborative care** through partner sharing",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node database_test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
