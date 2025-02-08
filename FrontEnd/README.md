@@ -4,7 +4,7 @@
 
 
 
-1. HTML (Login Page)
+1. HTML (Login Page) :
 Structure: The HTML file defines the structure of the login page.
 
 A form is used to collect the user's email and password.
@@ -15,7 +15,7 @@ Firebase SDK: The Firebase SDK is included to enable authentication functionalit
 
 Styling and Scripts: External CSS (styles.css) and JavaScript (app.js) files are linked for styling and functionality.
 
-2. CSS (styles.css)
+2. CSS (styles.css) :
 Styling: The CSS file styles the login page to make it visually appealing and user-friendly.
 
 The page is centered on the screen using flexbox.
@@ -24,7 +24,7 @@ Input fields, buttons, and links are styled for better usability.
 
 Hover effects are added to buttons and links for interactivity.
 
-3. JavaScript (app.js)
+3. JavaScript (app.js) :
 Firebase Initialization: Firebase is initialized using your Firebase project configuration. This connects your app to Firebase services like Authentication.
 
 Login Functionality:
