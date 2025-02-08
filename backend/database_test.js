@@ -4,7 +4,7 @@ import { setLogLevel } from "firebase/firestore";
 
 // Import Firebase modules using ES Module syntax
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, addDoc, collection } from "firebase/firestore";
+import { getFirestore, doc, addDoc, collection, Timestamp, updateDoc } from "firebase/firestore";
 config();
 
 // Your Firebase configuration using environment variables
@@ -39,5 +39,48 @@ async function addUserData() {
     }
 }
 
+// Function to add medication data with auto-generated document ID
+async function createMedicationData() {
+    try {
+        const medicationData = {
+            dosage: "500mg twice a day", // String
+            medication_id: "Tablet123",             // String
+            user_id: "3DpQHfZDkoDvfluONo3N", // String
+            name: "Sample Tablet", // String
+            refillAlertThreshold: 5, // Integer
+            remainingcount: 10, // Integer
+            schedule: [ 
+                { "hour": 9, "minute": 0 },
+                { "hour": 21, "minute": 0 }
+              ],                                // Array of Dictionary
+            prescriptionEndData: "2025-03-01T00:00:00.000Z",    // Timestamp
+            created_at: Timestamp.now(),  // Set when the document is created
+            updated_at: Timestamp.now()   // Set when the document is updated
+        };
+
+        // Add a new document with a generated ID
+        const docRef = await addDoc(collection(db, 'medications'), medicationData);
+        console.log("Medication data Created successfully with ID:", docRef.id);
+    } catch (error) {
+        console.error("Error writing Medication data:", error.message);
+    }
+}
+
+// Function to update medication data
+async function updateMedicationData(medicationId, updatedFields) {
+    try {
+        const medicationRef = doc(db, "medications", medicationId);
+
+        // Ensure updated_at is always updated
+        updatedFields.updated_at = Timestamp.now();  
+
+        await updateDoc(medicationRef, updatedFields);
+        console.log(`Medication data updated successfully for ID: ${medicationId}`);
+    } catch (error) {
+        console.error("Error updating Medication data:", error.message);
+    }
+}
+
 // Call the function to add user data
-addUserData();
+// createMedicationData();
+updateMedicationData("31pberHdd6mAA4GTQ00y", { remainingcount: 8 });
