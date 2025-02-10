@@ -136,7 +136,19 @@ sequenceDiagram
 - Cloud Run auto-scaling (max 100 instances)
 - CDN caching for medicine info pages
 
+### Microservices Breakdown 
 ---
+| Microservice         | Functionality                                   |
+|----------------------|------------------------------------------------|
+| auth-service         | User authentication (Firebase Auth + 2FA)       |
+| medication-service   | CRUD for medication tracking                    |
+| reminder-service     | Real-time notifications & reminders             |
+| partner-service      | Partner/caregiver access management             |
+| affiliate-service    | Pharmacy links & commissions tracking           |
+| scraper-service      | Medicine data lookup & caching                  |
+| api-gateway          | Central entry point for all services            |
+| frontend             | React-based web UI                              |
+| infra                | Infrastructure as Code (Terraform/Kubernetes)   |
 
 ### Competitive Advantages
 - **Real-Time Collaboration**: Unique partner code system for caregivers
