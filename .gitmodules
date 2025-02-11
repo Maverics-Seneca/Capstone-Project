@@ -21,3 +21,6 @@
 [submodule "reminder-service"]
 	path = reminder-service
 	url = https://github.com/Maverics-Seneca/reminder-service
+[submodule "scraper-service"]
+	path = scraper-service
+	url = https://github.com/Maverics-Seneca/scraper-service
