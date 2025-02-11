@@ -1,7 +1,7 @@
 [submodule "infra"]
     path = infra
-    url = https://github.com/HamzaSid020/infra.git
+    url = https://github.com/Maverics-Seneca/infrastructure
 	
 [submodule "api-gateway"]
 	path = api-gateway
-	url = https://github.com/HamzaSid020/api-gateway
+	url = https://github.com/Maverics-Seneca/api-gateway
