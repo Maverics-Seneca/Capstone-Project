@@ -5,3 +5,9 @@
 [submodule "api-gateway"]
 	path = api-gateway
 	url = https://github.com/Maverics-Seneca/api-gateway
+[submodule "sudrepo"]
+	path = sudrepo
+	url = https://github.com/Maverics-Seneca/auth-service
+[submodule "auth-service"]
+	path = auth-service
+	url = https://github.com/Maverics-Seneca/auth-service
