@@ -24,3 +24,6 @@
 [submodule "scraper-service"]
 	path = scraper-service
 	url = https://github.com/Maverics-Seneca/scraper-service
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/Maverics-Seneca/frontend
