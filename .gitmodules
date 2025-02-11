@@ -18,3 +18,6 @@
 [submodule "affiliate-service"]
 	path = affiliate-service
 	url = https://github.com/Maverics-Seneca/affiliate-service
+[submodule "reminder-service"]
+	path = reminder-service
+	url = https://github.com/Maverics-Seneca/reminder-service
