@@ -9,3 +9,6 @@
 [submodule "auth-service"]
 	path = auth-service
     url = https://github.com/Maverics-Seneca/auth-service
+[submodule "partner-service"]
+	path = partner-service
+	url = https://github.com/Maverics-Seneca/partner-service
