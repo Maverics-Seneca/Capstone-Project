@@ -2,6 +2,9 @@
 
 ## The Capstone Project
 
+### How to clone
+git clone -b test --recurse-submodules https://github.com/Maverics-Seneca/Capstone-Project.git .
+
 ### Business Plan
 
 #### 1. Value Proposition
