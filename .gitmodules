@@ -15,3 +15,6 @@
 [submodule "medication-service"]
 	path = medication-service
 	url = https://github.com/Maverics-Seneca/medication-service
+[submodule "affiliate-service"]
+	path = affiliate-service
+	url = https://github.com/Maverics-Seneca/affiliate-service
