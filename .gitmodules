@@ -12,3 +12,6 @@
 [submodule "partner-service"]
 	path = partner-service
 	url = https://github.com/Maverics-Seneca/partner-service
+[submodule "medication-service"]
+	path = medication-service
+	url = https://github.com/Maverics-Seneca/medication-service
