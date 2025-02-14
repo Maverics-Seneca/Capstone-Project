@@ -7,29 +7,23 @@
 	url = https://github.com/Maverics-Seneca/api-gateway
 	
 [submodule "auth-service"]
-	path = microservices/auth-service
+	path = auth-service
     url = https://github.com/Maverics-Seneca/auth-service
-
 [submodule "partner-service"]
-	path = microservices/partner-service
+	path = partner-service
 	url = https://github.com/Maverics-Seneca/partner-service
-
 [submodule "medication-service"]
-	path = microservices/medication-service
+	path = medication-service
 	url = https://github.com/Maverics-Seneca/medication-service
-
 [submodule "affiliate-service"]
-	path = microservices/affiliate-service
+	path = affiliate-service
 	url = https://github.com/Maverics-Seneca/affiliate-service
-
 [submodule "reminder-service"]
-	path = microservices/reminder-service
+	path = reminder-service
 	url = https://github.com/Maverics-Seneca/reminder-service
-
 [submodule "scraper-service"]
-	path = microservices/scraper-service
+	path = scraper-service
 	url = https://github.com/Maverics-Seneca/scraper-service
-
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/Maverics-Seneca/frontend
