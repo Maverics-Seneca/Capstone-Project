@@ -1,6 +1,7 @@
 [submodule "infra"]
     path = infra
     url = https://github.com/Maverics-Seneca/infrastructure
+	branch = dev
 	
 [submodule "api-gateway"]
 	path = api-gateway
