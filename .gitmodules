@@ -3,10 +3,6 @@
     url = https://github.com/Maverics-Seneca/infrastructure
 	branch = dev
 	
-[submodule "api-gateway"]
-	path = api-gateway
-	url = https://github.com/Maverics-Seneca/api-gateway
-
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/Maverics-Seneca/frontend
