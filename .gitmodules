@@ -32,3 +32,6 @@
 
 [submodule "*"]
 	branch = dev
+[submodule "middleware"]
+	path = middleware
+	url = https://github.com/Maverics-Seneca/middleware/
