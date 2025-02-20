@@ -1,7 +1,6 @@
 [submodule "infra"]
     path = infra
     url = https://github.com/Maverics-Seneca/infrastructure
-	branch = dev
 	
 [submodule "frontend"]
 	path = frontend
@@ -30,3 +29,6 @@
 [submodule "microservices/scraper-service"]
 	path = microservices/scraper-service
 	url = https://github.com/Maverics-Seneca/scraper-service
+
+[submodule "*"]
+	branch = dev
