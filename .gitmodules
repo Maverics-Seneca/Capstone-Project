@@ -30,8 +30,10 @@
 	path = microservices/scraper-service
 	url = https://github.com/Maverics-Seneca/scraper-service
 
-[submodule "*"]
-	branch = dev
 [submodule "middleware"]
 	path = middleware
 	url = https://github.com/Maverics-Seneca/middleware/
+	branch = dev
+
+[submodule "*"]
+	branch = dev
