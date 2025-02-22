@@ -24,6 +24,41 @@ services:
     networks:
       - app-network
 
+  affiliate-service:
+    build: ./microservices/affiliate-service
+    ports:
+      - "4001:4001"
+    networks:
+      - app-network
+
+  medication-service:
+    build: ./microservices/medication-service
+    ports:
+      - "4002:4002"
+    networks:
+      - app-network
+
+  partner-service:
+    build: ./microservices/partner-service
+    ports:
+      - "4004:4004"
+    networks:
+      - app-network
+
+  reminder-service:
+    build: ./microservices/reminder-service
+    ports:
+      - "4005:4005"
+    networks:
+      - app-network
+
+  scraper-service:
+    build: ./microservices/scraper-service
+    ports:
+      - "4003:4003"
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: bridge
