@@ -12,6 +12,19 @@ services:
     networks:
       - app-network
 
+  caretaker-service:
+    build: ./microservices/caretaker-service
+    ports:
+      - "4004:4004"
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - FIREBASE_CREDENTIALS=${FIREBASE_CREDENTIALS}
+      - CORS_ORIGIN=http://middleware:3001
+    networks:
+      - app-network
+    depends_on:
+      - auth-service 
+
   middleware:
     build: ./middleware
     ports:
@@ -41,7 +54,6 @@ networks:
   app-network:
     driver: bridge
 
-
   #   medication-service:
   # build: ./microservices/medication-service
   # ports:
@@ -65,13 +77,6 @@ networks:
   #   build: ./microservices/medication-service
   #   ports:
   #     - "4002:4002"
-  #   networks:
-  #     - app-network
-
-  # partner-service:
-  #   build: ./microservices/partner-service
-  #   ports:
-  #     - "4004:4004"
   #   networks:
   #     - app-network
 
