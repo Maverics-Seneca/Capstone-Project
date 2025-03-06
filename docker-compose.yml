@@ -1,50 +1,26 @@
+version: '3.8'
+
 services:
   auth-service:
     build: ./microservices/auth-service
     ports:
       - "4000:4000"
-    networks:
-      - app-network
-
-  affiliate-service:
-    build: ./microservices/affiliate-service
-    ports:
-      - "4001:4001"
-    networks:
-      - app-network
-
-  medication-service:
-    build: ./microservices/medication-service
-    ports:
-      - "4002:4002"
-    networks:
-      - app-network
-
-  partner-service:
-    build: ./microservices/partner-service
-    ports:
-      - "4004:4004"
-    networks:
-      - app-network
-
-  reminder-service:
-    build: ./microservices/reminder-service
-    ports:
-      - "4005:4005"
-    networks:
-      - app-network
-
-  scraper-service:
-    build: ./microservices/scraper-service
-    ports:
-      - "4003:4003"
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - FIREBASE_CREDENTIALS=${FIREBASE_CREDENTIALS}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - CORS_ORIGIN=http://middleware:3001
     networks:
       - app-network
 
   middleware:
     build: ./middleware
     ports:
-      - "5000:5000"
+      - "3001:3001"
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - AUTH_SERVICE_URL=http://auth-service:4000
+      - CORS_ORIGIN=http://localhost:3000
     networks:
       - app-network
     depends_on:
@@ -54,11 +30,62 @@ services:
     build: ./frontend
     ports:
       - "3000:3000"
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - MIDDLEWARE_URL=http://middleware:3001
     networks:
       - app-network
     depends_on:
       - middleware
-      
+
 networks:
   app-network:
     driver: bridge
+
+
+  #   medication-service:
+  # build: ./microservices/medication-service
+  # ports:
+  #   - "4002:4002"
+  # environment:
+  #   - JWT_SECRET=${JWT_SECRET}
+  #   - DATABASE_URL=${DATABASE_URL}
+  # networks:
+  #   - app-network
+  # depends_on:
+  #   - auth-service
+
+  # affiliate-service:
+  #   build: ./microservices/affiliate-service
+  #   ports:
+  #     - "4001:4001"
+  #   networks:
+  #     - app-network
+
+  # medication-service:
+  #   build: ./microservices/medication-service
+  #   ports:
+  #     - "4002:4002"
+  #   networks:
+  #     - app-network
+
+  # partner-service:
+  #   build: ./microservices/partner-service
+  #   ports:
+  #     - "4004:4004"
+  #   networks:
+  #     - app-network
+
+  # reminder-service:
+  #   build: ./microservices/reminder-service
+  #   ports:
+  #     - "4005:4005"
+  #   networks:
+  #     - app-network
+
+  # scraper-service:
+  #   build: ./microservices/scraper-service
+  #   ports:
+  #     - "4003:4003"
+  #   networks:
+  #     - app-network
