@@ -11,7 +11,7 @@
 	url = https://github.com/Maverics-Seneca/auth-service
 
 [submodule "microservices/partner-service"]
-	path = microservices/partner-service
+	path = microservices/caretaker-service
 	url = https://github.com/Maverics-Seneca/partner-service
 
 [submodule "microservices/medication-service"]
