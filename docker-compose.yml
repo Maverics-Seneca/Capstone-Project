@@ -1,4 +1,4 @@
-version: '1.17.1'
+version: "1.17.1"
 services:
   auth-service:
     build: ./microservices/auth-service
@@ -23,7 +23,20 @@ services:
     networks:
       - app-network
     depends_on:
-      - auth-service 
+      - auth-service
+
+  medication-service:
+    build: ./microservices/medication-service
+    ports:
+      - "4002:4002"
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - FIREBASE_CREDENTIALS=${FIREBASE_CREDENTIALS}
+      - CORS_ORIGIN=http://middleware:3001
+    networks:
+      - app-network
+    depends_on:
+      - auth-service
 
   middleware:
     build: ./middleware
@@ -53,18 +66,6 @@ services:
 networks:
   app-network:
     driver: bridge
-
-  #   medication-service:
-  # build: ./microservices/medication-service
-  # ports:
-  #   - "4002:4002"
-  # environment:
-  #   - JWT_SECRET=${JWT_SECRET}
-  #   - DATABASE_URL=${DATABASE_URL}
-  # networks:
-  #   - app-network
-  # depends_on:
-  #   - auth-service
 
   # affiliate-service:
   #   build: ./microservices/affiliate-service
