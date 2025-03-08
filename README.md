@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🏥 Maverics - Seneca
 ## The Capstone Project
 
@@ -157,6 +158,11 @@ For questions or contributions, contact **Hamza Siddiqui** at hamzahmedsiddiqui@
 ### How to clone
 git clone -b test --recurse-submodules https://github.com/Maverics-Seneca/Capstone-Project.git .
 
+=======
+# Maverics
+## The Capstone Project
+
+>>>>>>> d38de1af49450ef896bd069d76e27e2d4258b449
 ### Business Plan
 
 #### 1. Value Proposition
@@ -291,6 +297,7 @@ sequenceDiagram
 - Cloud Run auto-scaling (max 100 instances)
 - CDN caching for medicine info pages
 
+<<<<<<< HEAD
 ### Microservices Breakdown 
 ---
 | Microservice         | Functionality                                   |
@@ -304,6 +311,9 @@ sequenceDiagram
 | api-gateway          | Central entry point for all services            |
 | frontend             | React-based web UI                              |
 | infra                | Infrastructure as Code (Terraform/Kubernetes)   |
+=======
+---
+>>>>>>> d38de1af49450ef896bd069d76e27e2d4258b449
 
 ### Competitive Advantages
 - **Real-Time Collaboration**: Unique partner code system for caregivers
