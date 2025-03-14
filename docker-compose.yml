@@ -1,4 +1,4 @@
-version: "1.17.1"
+version: "3.8"
 services:
   auth-service:
     build: ./microservices/auth-service
@@ -37,6 +37,18 @@ services:
       - app-network
     depends_on:
       - auth-service
+  
+  scraper-service:
+    build: ./microservices/scraper-service
+    ports:
+      - "4006:4006"
+    environment:
+      - FIREBASE_CREDENTIALS=${FIREBASE_CREDENTIALS}
+      - CORS_ORIGIN=http://middleware:3001
+    networks:
+      - app-network
+    depends_on:
+      - medication-service
 
   reminder-service:
     build: ./microservices/reminder-service
