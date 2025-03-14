@@ -1,4 +1,4 @@
-version: "1.17.1"
+version: "3.8"
 services:
   auth-service:
     build: ./microservices/auth-service
