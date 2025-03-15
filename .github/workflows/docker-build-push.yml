@@ -48,6 +48,20 @@ jobs:
             "microservices/scraper-service"
           )
 
+          # Loop through each service directory and create a .env file
+          for SERVICE in "${SERVICES[@]}"; do
+            echo "Creating .env file in $SERVICE..."
+            
+            # Use HEREDOC to create the .env file dynamically
+            cat > $SERVICE/.env <<EOF
+            RESEND_API_KEY=${RESEND_API_KEY}
+            JWT_SECRET=${JWT_SECRET}
+            FIREBASE_CREDENTIALS=${FIREBASE_CREDENTIALS}
+            EOF
+
+            echo ".env file created in $SERVICE."
+          done
+
           # Loop through each submodule directory, build, and push
           for SERVICE in "${SERVICES[@]}"; do
             IMAGE_NAME=$(basename "$SERVICE")  # Extract folder name for image
