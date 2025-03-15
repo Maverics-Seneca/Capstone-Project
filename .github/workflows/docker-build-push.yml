@@ -34,7 +34,10 @@ jobs:
       - name: Build and Push Docker Images from Submodules
         env:
           ACR_LOGIN_SERVER: ${{ secrets.AZURE_ACR_LOGIN_SERVER }}
-          IMAGE_TAG: latest  # Can be replaced with dynamic versioning
+          IMAGE_TAG: v2  # Can be replaced with dynamic versioning
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
         run: |
           # Define submodule directories
           SERVICES=(
@@ -52,12 +55,9 @@ jobs:
           for SERVICE in "${SERVICES[@]}"; do
             echo "Creating .env file in $SERVICE..."
             
-            # Use HEREDOC to create the .env file dynamically
-            cat > $SERVICE/.env <<EOF
-            RESEND_API_KEY=${RESEND_API_KEY}
-            JWT_SECRET=${JWT_SECRET}
-            FIREBASE_CREDENTIALS=${FIREBASE_CREDENTIALS}
-            EOF
+            # Use printf to create the .env file dynamically and prevent indentation issues
+            printf "RESEND_API_KEY=%s\nJWT_SECRET=%s\nFIREBASE_CREDENTIALS=%s\n" \
+              "$RESEND_API_KEY" "$JWT_SECRET" "$FIREBASE_CREDENTIALS" > "$SERVICE/.env"
 
             echo ".env file created in $SERVICE."
           done
