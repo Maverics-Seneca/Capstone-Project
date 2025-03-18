@@ -1,4 +1,5 @@
 version: "3.8"
+
 services:
   auth-service:
     build: ./microservices/auth-service
@@ -37,7 +38,7 @@ services:
       - app-network
     depends_on:
       - auth-service
-  
+
   scraper-service:
     build: ./microservices/scraper-service
     ports:
@@ -92,26 +93,3 @@ services:
 networks:
   app-network:
     driver: bridge
-
-  # affiliate-service:
-  #   build: ./microservices/affiliate-service
-  #   ports:
-  #     - "4001:4001"
-  #   networks:
-  #     - app-network
-
-  # medication-service:
-  #   build: ./microservices/medication-service
-  #   ports:
-  #     - "4002:4002"
-  #   networks:
-  #     - app-network
-
-
-
-  # scraper-service:
-  #   build: ./microservices/scraper-service
-  #   ports:
-  #     - "4003:4003"
-  #   networks:
-  #     - app-network
