@@ -18,10 +18,6 @@
 	path = microservices/medication-service
 	url = https://github.com/Maverics-Seneca/medication-service
 
-[submodule "microservices/affiliate-service"]
-	path = microservices/affiliate-service
-	url = https://github.com/Maverics-Seneca/affiliate-service
-
 [submodule "microservices/reminder-service"]
 	path = microservices/reminder-service
 	url = https://github.com/Maverics-Seneca/reminder-service
