@@ -1,6 +1,168 @@
+<<<<<<< HEAD
+# 🏥 Maverics - Seneca
+## The Capstone Project
+
+MediTrack is a **microservices-based medication management platform** that helps users track their medications, set reminders, and allow caregivers to monitor adherence. This project follows a **cloud-native approach** using Firebase, Node.js, Python, Kubernetes, and Terraform.
+
+## 📌 Project Structure
+The platform consists of multiple microservices, each handling a specific domain.
+
+```
+Maverics-Seneca/
+│── auth-service/         # User authentication (Firebase Auth)
+│── medication-service/   # CRUD for medication tracking
+│── reminder-service/     # Real-time reminders & notifications
+│── partner-service/      # Caregiver access management
+│── affiliate-service/    # Pharmacy links & commissions
+│── scraper-service/      # Medicine data lookup & caching
+│── api-gateway/          # Central entry point for all services
+│── frontend/             # React-based web UI
+│── infra/                # Infrastructure as Code (Terraform/Kubernetes)
+```
+
+---
+
+## 🚀 Microservices Overview
+Each service runs independently with its own **database, API, and CI/CD pipeline**.
+
+### 1️⃣ **`auth-service` (Authentication)**
+- Firebase Authentication (JWT, 2FA, Role-Based Access Control)
+- **Tech:** Node.js, Firebase Auth
+
+### 2️⃣ **`medication-service` (Medication Tracking)**
+- CRUD operations for medication records
+- **Tech:** Node.js, Firebase Firestore
+
+### 3️⃣ **`reminder-service` (Medication Reminders)**
+- Sends push notifications & SMS reminders
+- **Tech:** Node.js, Firebase Cloud Functions
+
+### 4️⃣ **`partner-service` (Caregiver Access)**
+- Allows caregivers to track medication adherence
+- **Tech:** Node.js, Firebase Firestore
+
+### 5️⃣ **`affiliate-service` (Pharmacy Links)**
+- Tracks pharmacy links & referral commissions
+- **Tech:** Node.js, Firebase Firestore
+
+### 6️⃣ **`scraper-service` (Medicine Data Lookup)**
+- Scrapes NHS/CDC databases for medicine info
+- **Tech:** Python, Cheerio/BeautifulSoup
+
+### 7️⃣ **`api-gateway` (Central API Gateway)**
+- Routes requests to appropriate microservices
+- **Tech:** Node.js, Express, Firebase Auth Middleware
+
+### 8️⃣ **`frontend` (Web UI)**
+- User-friendly React.js interface
+- **Tech:** React, Firebase Authentication
+
+### 9️⃣ **`infra` (Infrastructure as Code)**
+- Deploys services to Kubernetes & Azure
+- **Tech:** Terraform, Kubernetes, Helm
+
+---
+
+## 🏗️ Deployment & Infrastructure
+- **Containerized**: All services run in Docker
+- **Orchestrated**: Kubernetes for service management
+- **CI/CD**: GitHub Actions for automated deployment
+
+---
+
+## 🛠️ Setup & Installation
+### **1️⃣ Clone the Repository**
+```sh
+git clone https://github.com/Maverics-Seneca/Maverics-Seneca.git
+cd Maverics-Seneca
+```
+
+### **2️⃣ Install Dependencies**
+Each microservice has its own dependencies. Install them as needed:
+```sh
+cd auth-service && npm install
+cd ../medication-service && npm install
+```
+
+### **3️⃣ Environment Variables**
+Each service requires a `.env` file. Example:
+```env
+FIREBASE_API_KEY=your_api_key
+DATABASE_URL=your_database_url
+```
+
+### **4️⃣ Run Services**
+```sh
+cd auth-service && npm start
+cd medication-service && npm start
+```
+
+### **5️⃣ Run Frontend**
+```sh
+cd frontend && npm start
+```
+
+### **6️⃣ Deploy to Kubernetes**
+```sh
+kubectl apply -f infra/k8s/
+```
+
+---
+
+## 🔥 CI/CD Pipeline
+Each service has a GitHub Actions workflow:
+```yaml
+name: Deploy
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build Docker image
+        run: docker build -t my-service .
+      - name: Push to registry
+        run: docker push my-service
+      - name: Deploy to Kubernetes
+        run: kubectl apply -f k8s/
+```
+
+---
+
+## 📌 Tech Stack
+- **Backend**: Node.js, Express, Firebase Firestore
+- **Frontend**: HTMML, CSS, Bootstrap
+- **Database**: Firebase Firestore
+- **Infrastructure**: Kubernetes, Terraform, Docker
+- **CI/CD**: GitHub Actions, Azure Kubernetes Service (AKS)
+
+---
+
+## 👥 Contributors
+- **Hamza  Siddiqui** - [@hamzasid020](https://github.com/hamzasid020)
+- **Arpit Gupta** - [@arpit](https://github.com/)
+- **Ranju** - [@Ranju](https://github.com/)
+- **Aisha Ansari** - [@aisha](https://github.com/)
+- **Ankita Mahajan** - [@ankita](https://github.com/)
+---
+
+## 📜 License
+MIT License. See `LICENSE` file for details.
+
+---
+
+## 📬 Contact
+For questions or contributions, contact **Hamza Siddiqui** at hamzahmedsiddiqui@outlook.com.
+
+### How to clone
+git clone -b test --recurse-submodules https://github.com/Maverics-Seneca/Capstone-Project.git .
+
+=======
 # Maverics
 ## The Capstone Project
 
+>>>>>>> d38de1af49450ef896bd069d76e27e2d4258b449
 ### Business Plan
 
 #### 1. Value Proposition
@@ -135,7 +297,23 @@ sequenceDiagram
 - Cloud Run auto-scaling (max 100 instances)
 - CDN caching for medicine info pages
 
+<<<<<<< HEAD
+### Microservices Breakdown 
 ---
+| Microservice         | Functionality                                   |
+|----------------------|------------------------------------------------|
+| auth-service         | User authentication (Firebase Auth + 2FA)       |
+| medication-service   | CRUD for medication tracking                    |
+| reminder-service     | Real-time notifications & reminders             |
+| partner-service      | Partner/caregiver access management             |
+| affiliate-service    | Pharmacy links & commissions tracking           |
+| scraper-service      | Medicine data lookup & caching                  |
+| api-gateway          | Central entry point for all services            |
+| frontend             | React-based web UI                              |
+| infra                | Infrastructure as Code (Terraform/Kubernetes)   |
+=======
+---
+>>>>>>> d38de1af49450ef896bd069d76e27e2d4258b449
 
 ### Competitive Advantages
 - **Real-Time Collaboration**: Unique partner code system for caregivers
