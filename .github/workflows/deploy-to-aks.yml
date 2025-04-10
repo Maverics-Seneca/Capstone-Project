@@ -1,0 +1,43 @@
+name: Deploy to AKS
+
+on:
+  push:
+    branches:
+      - dev
+    paths:
+      - 'k8s-manifests/**'
+      - '.github/workflows/deploy-to-aks.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      NAMESPACE: maveric
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up kubeconfig from secret
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG_B64 }}" | base64 -d > ~/.kube/config
+
+      - name: Create namespace if not exists
+        run: kubectl create namespace $NAMESPACE --dry-run=client -o yaml | kubectl apply -f -
+
+      - name: Create/Replace Kubernetes secrets from GitHub secrets
+        run: |
+          kubectl delete secret app-secrets -n $NAMESPACE --ignore-not-found
+          kubectl create secret generic app-secrets -n $NAMESPACE \
+            --from-literal=JWT_SECRET="${{ secrets.JWT_SECRET }}" \
+            --from-literal=FIREBASE_CREDENTIALS="${{ secrets.FIREBASE_CREDENTIALS }}" \
+            --from-literal=RESEND_API_KEY="${{ secrets.RESEND_API_KEY }}"
+
+      - name: Apply Kubernetes manifests
+        run: kubectl apply -f k8s-manifests/
+
+      - name: Verify Deployment
+        run: kubectl get all -n $NAMESPACE
