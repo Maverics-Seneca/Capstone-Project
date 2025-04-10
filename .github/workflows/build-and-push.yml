@@ -24,7 +24,7 @@ jobs:
       - name: Checkout submodules to dev branch
         run: |
           git submodule update --init --recursive
-          git submodule foreach 'git checkout dev && git pull origin dev'
+          git submodule foreach 'git fetch && git checkout dev && git pull origin dev'
 
       - name: Parse ACR credentials from JSON secret
         id: acr
