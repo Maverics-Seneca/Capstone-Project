@@ -7,6 +7,12 @@ on:
     paths:
       - 'k8s-manifests/**'
       - '.github/workflows/deploy-to-aks.yml'
+
+  workflow_run:
+    workflows: ["Build and Push to ACR"]
+    types:
+      - completed
+
   workflow_dispatch:
 
 jobs:
