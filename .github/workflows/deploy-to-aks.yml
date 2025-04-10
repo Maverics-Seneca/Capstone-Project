@@ -53,7 +53,7 @@ jobs:
         run: |
           echo "🌐 Waiting for LoadBalancer external IP..."
           for i in {1..20}; do
-            IP=$(kubectl get svc frontend -n $NAMESPACE -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+            IP=$(kubectl get svc frontend-service -n $NAMESPACE -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
             if [[ -n "$IP" ]]; then
               echo "✅ Found IP: $IP"
               echo "loadbalancer_ip=$IP" >> $GITHUB_OUTPUT
