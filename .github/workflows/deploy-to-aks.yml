@@ -49,17 +49,21 @@ jobs:
         run: kubectl get all -n $NAMESPACE
     
       - name: Get LoadBalancer IP
+        id: get-ip
         run: |
-            echo "🌐 Waiting for LoadBalancer external IP..."
-            for i in {1..20}; do
-            IP=$(kubectl get svc frontend-service -n $NAMESPACE -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+          echo "🌐 Waiting for LoadBalancer external IP..."
+          for i in {1..20}; do
+            IP=$(kubectl get svc frontend -n $NAMESPACE -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
             if [[ -n "$IP" ]]; then
-                echo "✅ LoadBalancer IP: $IP"
-                echo "::set-output name=loadbalancer_ip::$IP"
-                break
+              echo "✅ Found IP: $IP"
+              echo "loadbalancer_ip=$IP" >> $GITHUB_OUTPUT
+              break
             fi
             echo "⏳ Still waiting... retrying in 15s"
             sleep 15
-            done
+          done
+    
+      - name: Show IP
+        run: | 
+            echo "Frontend IP is: http://${{ steps.get-ip.outputs.loadbalancer_ip }}"
         
-        id: get-ip
