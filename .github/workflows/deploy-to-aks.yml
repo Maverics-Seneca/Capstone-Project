@@ -47,3 +47,19 @@ jobs:
 
       - name: Verify Deployment
         run: kubectl get all -n $NAMESPACE
+    
+      - name: Get LoadBalancer IP
+        run: |
+            echo "🌐 Waiting for LoadBalancer external IP..."
+            for i in {1..20}; do
+            IP=$(kubectl get svc frontend-service -n $NAMESPACE -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+            if [[ -n "$IP" ]]; then
+                echo "✅ LoadBalancer IP: $IP"
+                echo "::set-output name=loadbalancer_ip::$IP"
+                break
+            fi
+            echo "⏳ Still waiting... retrying in 15s"
+            sleep 15
+            done
+        
+        id: get-ip
