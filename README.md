@@ -282,6 +282,9 @@ sequenceDiagram
 
 ### Deployment Strategy
 
+![GHActionFlow](https://github.com/user-attachments/assets/e0f489c5-3a61-4656-b75d-0cbe4aa8602d)
+
+
 #### CI/CD Pipeline
 - GitHub Actions for automatic deployments
 - Firebase Hosting for frontend
