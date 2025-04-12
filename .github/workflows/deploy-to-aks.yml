@@ -3,7 +3,7 @@ name: Deploy to AKS
 on:
   push:
     branches:
-      - dev
+      - main
     paths:
       - 'k8s-manifests/**'
       - '.github/workflows/deploy-to-aks.yml'

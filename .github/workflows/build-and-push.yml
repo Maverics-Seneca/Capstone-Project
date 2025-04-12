@@ -3,7 +3,7 @@ name: Build and Push to ACR
 on:
   push:
     branches:
-      - dev
+      - main
     paths:
       - 'microservices/**'
       - 'middleware/**'
@@ -16,12 +16,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone repo with all submodules on dev
+      - name: Clone repo with all submodules
         run: |
-          git clone -b dev --recurse-submodules https://github.com/${{ github.repository }} repo
+          git clone --recurse-submodules https://github.com/${{ github.repository }} repo
           cd repo
           git submodule init
-          git submodule foreach 'git fetch && git checkout dev && git pull origin dev'
+          git submodule foreach 'git fetch'
 
       - name: Parse ACR credentials from JSON secret
         id: acr
