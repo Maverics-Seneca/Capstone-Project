@@ -1,0 +1,59 @@
+name: Build and Push to ACR
+
+on:
+  push:
+    branches:
+      - dev
+    paths:
+      - 'microservices/**'
+      - 'middleware/**'
+      - 'frontend/**'
+      - '.github/workflows/build-and-push.yml'
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repo with all submodules on dev
+        run: |
+          git clone -b dev --recurse-submodules https://github.com/${{ github.repository }} repo
+          cd repo
+          git submodule init
+          git submodule foreach 'git fetch && git checkout dev && git pull origin dev'
+
+      - name: Parse ACR credentials from JSON secret
+        id: acr
+        run: |
+          echo '${{ secrets.ACR_CREDENTIAL_JSON }}' > acr.json
+          USERNAME=$(jq -r '.username' < acr.json)
+          PASSWORD=$(jq -r '.password' < acr.json)
+          echo "ACR_USERNAME=$USERNAME" >> $GITHUB_ENV
+          echo "ACR_PASSWORD=$PASSWORD" >> $GITHUB_ENV
+          echo "ACR_LOGIN_SERVER=${USERNAME}.azurecr.io" >> $GITHUB_ENV
+
+      - name: Log in to ACR
+        run: |
+          echo "$ACR_PASSWORD" | docker login "$ACR_LOGIN_SERVER" -u "$ACR_USERNAME" --password-stdin
+
+      - name: Build and push Docker images
+        working-directory: ./repo
+        run: |
+          SERVICES=(
+            "auth-service:microservices/auth-service"
+            "caretaker-service:microservices/caretaker-service"
+            "medication-service:microservices/medication-service"
+            "scraper-service:microservices/scraper-service"
+            "reminder-service:microservices/reminder-service"
+            "middleware:middleware"
+            "frontend:frontend"
+          )
+          for entry in "${SERVICES[@]}"; do
+            SERVICE_NAME="${entry%%:*}"
+            SERVICE_PATH="${entry##*:}"
+            IMAGE_NAME="$ACR_LOGIN_SERVER/$SERVICE_NAME:latest"
+            echo "🔧 Building $SERVICE_NAME..."
+            docker build -t "$IMAGE_NAME" "$SERVICE_PATH"
+            docker push "$IMAGE_NAME"
+          done
