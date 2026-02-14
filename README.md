@@ -161,7 +161,6 @@ git clone -b test --recurse-submodules https://github.com/Maverics-Seneca/Capsto
 # Maverics
 ## The Capstone Project
 
->>>>>>> d38de1af49450ef896bd069d76e27e2d4258b449
 ### Business Plan
 
 #### 1. Value Proposition
