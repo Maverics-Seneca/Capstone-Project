@@ -157,7 +157,6 @@ For questions or contributions, contact **Hamza Siddiqui** at hamzahmedsiddiqui@
 ### How to clone
 git clone -b test --recurse-submodules https://github.com/Maverics-Seneca/Capstone-Project.git .
 
-=======
 # Maverics
 ## The Capstone Project
 
@@ -311,7 +310,7 @@ sequenceDiagram
 | api-gateway          | Central entry point for all services            |
 | frontend             | React-based web UI                              |
 | infra                | Infrastructure as Code (Terraform/Kubernetes)   |
-=======
+
 ---
 
 ### Competitive Advantages
